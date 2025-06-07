@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ffb6c1, #aad2eb); /* Gradient from light pink to light blue */
+        }
+
+        #content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%; /* Adjust the width as needed */
+        }
+
+        form {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            align-items: left;
+            justify-content: left;
+            margin-right: 20px; /* Add margin-right for space */
+        }
+
+        select {
+            width: calc(100% - 20px); /* Adjusted width to include padding and margin */
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px; /* Add margin to separate buttons */
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .highlighted-box {
+            border-radius: 6px;
+            background-color: #fff; /* Highlighted box color */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            width: 30%; /* Adjust the width as needed */
+            padding: 10px;
+            justify-items: right;
+            display: flex; /* Display images in a row */
+            flex-wrap: wrap; /* Allow images to wrap */
+            align-items: center; /* Center-align images */
+        }
+
+        .highlighted-box img {
+            margin: 5px; /* Add margin between images */
+            width: 200px; /* Set larger width */
+            height: auto; /* Maintain aspect ratio */
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <form>
+            <label for="symptom">Select Symptom:</label>
+            <select id="symptom">
+                <option value="fever">Fever</option>
+                <option value="cold">Cold</option>
+                <option value="cough">Cough</option>
+                <option value="headache">Headache</option>
+                <option value="bodypains">Body Pains</option>
+                <option value="diarrhoea">Diarrhoea</option>
+            </select>
+            <p>*fever</p>
+            <p>*cold</p>
+            <p>*cough</p>
+            <p>*headache</p> 
+            <p>*bodypains</p>
+            <p>*diarrhoea</p>
+            <center>
+                <button type="button" onclick="validate()">Submit</button>
+                <button type="reset">Reset</button>
+            </center>
+        </form>
+
+        <div class="highlighted-box" id="image-container"></div>
+    </div>
+
+     <button id="exerciseButton" onclick="goToExercisePage()">Exercise</button>
+
+
+    <script>
+        function validate() {
+            var symptoms = {
+                fever: ['https://img.freepik.com/free-photo/honey-jar-ai-generated-image_268835-5046.jpg', 'https://img.freepik.com/premium-vector/variety-protein-foods-vector_1639-46807.jpg?size=626&ext=jpg&ga=GA1.1.87170709.1707350400&semt=ais'],
+                cold: ['https://www.shutterstock.com/image-photo/bone-broth-small-soup-bowl-260nw-146106581.jpg', 'https://media.istockphoto.com/id/487277324/photo/citrus-fruits-isolated-on-white-with-clipping-path.jpg?s=612x612&w=0&k=20&c=yb8DMxb3chIPgfmax0dd0wO-1D5xh_mZYKg2XEHOoHE='],
+                cough: ['https://media.istockphoto.com/id/1137365972/photo/close-up-of-steaming-cup-of-coffee-or-tea-on-vintage-table-early-morning-breakfast-on-rustic.jpg?s=612x612&w=0&k=20&c=-XbehJve0dz0daS_jVi2VLmlVMGrwPIQRdaFWChKFsM=', 'https://i.pinimg.com/736x/33/c1/b1/33c1b1036fd9a67dfb2de7242041dec5.jpg'],
+                headache: ['https://img.freepik.com/free-photo/healthy-vegetables-wooden-table_1150-38014.jpg', 'https://media.istockphoto.com/id/1435026978/photo/green-bowl-of-greek-yogurt-and-fresh-berries-isolated-on-white-background.jpg?s=612x612&w=0&k=20&c=q-jG8QyL_Qy6PtYPpgVMZncBlUYwxdYJP2wxlm-4x6g='],
+                bodypains: ['https://static.toiimg.com/photo/69385334.cms', 'https://cdn.mylittlemoppet.com/wp-content/uploads/2018/10/06.png?ssl=1'],
+                diarrhoea: ['https://images.everydayhealth.com/images/diet-nutrition/healthy-recipes/foods-high-in-magnesium-03-722x406.jpg', 'https://media.post.rvohealth.io/wp-content/uploads/2021/04/watermelon-1200x628-facebook.jpg']
+                // Add more symptoms and corresponding images as needed
+            };
+
+            var symptom = document.getElementById("symptom").value.toLowerCase().trim();
+            var imageContainer = document.getElementById("image-container");
+
+            if (symptoms.hasOwnProperty(symptom)) {
+                var images = symptoms[symptom];
+                imageContainer.innerHTML = ''; // Clear previous images
+
+                images.forEach(function(imageSrc) {
+                    var img = document.createElement('img');
+                    img.src = imageSrc;
+                    img.alt = symptom; // Set alt attribute for accessibility
+                    imageContainer.appendChild(img);
+                });
+            } else {
+                alert("Please select a valid symptom.");
+            }
+        }
+
+        function goToExercisePage() {
+            window.location.href = 'file:///C:/Users/lenovo/Documents/fitness(exercess).html';
+        }
+    </script>
+     <nav style="background: #007BFF; padding: 10px; text-align: center;">
+    <a href="pro.html" style="color: white; margin: 0 15px;">Home</a>
+    <a href="food.html" style="color: white; margin: 0 15px;">Food Suggestions</a>
+    <a href="fitness(exercess).html" style="color: white; margin: 0 15px;">Exercise</a>
+    <a href="login.html" style="color: white; margin: 0 15px;">Login</a>
+    <a href="register.html" style="color: white; margin: 0 15px;">Register</a>
+  </nav>
+  <h2>Food Tips Based on Health Issues</h2>
+  <ul>
+    <li>Headache – Almonds, bananas, water</li>
+    <li>Fever – Herbal tea, rice soup</li>
+    <li>Cold – Citrus fruits, garlic, ginger tea</li>
+    <li>Stomach pain – Apple sauce, bananas</li>
+  </ul>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ffb6c1, #aad2eb); /* Gradient from light pink to light blue */
+        }
+
+        #content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%; /* Adjust the width as needed */
+        }
+
+        form {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            align-items: left;
+            justify-content: left;
+            margin-right: 20px; /* Add margin-right for space */
+        }
+
+        select {
+            width: calc(100% - 20px); /* Adjusted width to include padding and margin */
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .highlighted-box {
+            border-radius: 6px;
+            background-color: #fff; /* Highlighted box color */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            width: 80%; /* Adjust the width as needed */
+            padding: 10px;
+            justify-items: right;
+            display: flex; /* Display images in a row */
+            flex-direction: row; /* Arrange images in a row */
+            align-items: center; /* Center-align images */
+            overflow-x: auto; /* Enable horizontal scrolling */
+        }
+
+        .highlighted-box img {
+            width: 60%; /* Set image width */
+            height: auto; /* Maintain aspect ratio */
+            margin-right: 10px; /* Add space between images */
+        }
+    </style>
+</head>
+<body>
+     <nav style="background: #007BFF; padding: 10px; text-align: center;">
+    <a href="pro.html" style="color: white; margin: 0 15px;">Home</a>
+    <a href="food.html" style="color: white; margin: 0 15px;">Food Suggestions</a>
+    <a href="fitness(exercess).html" style="color: white; margin: 0 15px;">Exercise</a>
+    <a href="login.html" style="color: white; margin: 0 15px;">Login</a>
+    <a href="register.html" style="color: white; margin: 0 15px;">Register</a>
+  </nav>
+  <h2>Exercise Recommendations</h2>
+  <ul>
+    <li>Headache – Neck stretches, deep breathing</li>
+    <li>Joint pain – Low impact swimming, cycling</li>
+    <li>Back pain – Cat-cow pose, bridge stretch</li>
+    <li>Stomach pain – Light walking, child’s pose</li>
+  </ul>
+    <div id="content">
+        <form>
+            <label for="symptom">Select Symptom:</label>
+            <select id="symptom">
+                <option value="sholder">Sholder</option>
+                <option value="leg">Leg</option>
+                <option value="backpain">Backpain</option>
+                <option value="neckpain">Neckpain</option>
+            </select>
+            <p>*sholder</p>
+           <p>*leg</p>
+           <p>*backpain</p>
+           <p>*neckpain</p> 
+            <center><button type="button" onclick="validate()">Submit</button></center><br>
+            <center><button onclick="removeElement()">Reset</button></center><br>
+        </form>
+
+        <div>
+            <div class="highlighted-box" id="clear" >
+                <!-- Display GIF -->
+                <img src="fit1.gif" id="gif" style="display: none;">
+                <img src="fit2.gif" id="gif1" style="display: none;">
+                <img src="fit3.gif" id="gif2" style="display: none;">
+                <img src="fit5.gif" id="gif3" style="display: none;">
+                <img src="fit6.gif" id="gif4" style="display: none;">
+                <img src="fit7.gif" id="gif5" style="display: none;">
+                <img src="fit8.gif" id="gif6" style="display: none;">
+                <img src="fit9.gif" id="gif7" style="display: none;">
+                <img src="fit10.gif" id="gif8" style="display: none;">
+                <img src="fit11.gif" id="gif9" style="display: none;">
+                <img src="fit12.gif" id="gif10" style="display: none;">
+                <img src="fit13.gif" id="gif11" style="display: none;">
+                <img src="fit14.gif" id="gif12" style="display: none;">
+                <img src="fit15.gif" id="gif13" style="display: none;">
+                <img src="fit16.gif" id="gif14" style="display: none;">
+                <img src="fit17.gif" id="gif15" style="display: none;">
+                <img src="fit19.gif" id="gif16" style="display: none;">
+                <img src="fit20.gif" id="gif17" style="display: none;">
+                <img src="fit22.gif" id="gif18" style="display: none;">
+                <img src="fit23.gif" id="gif19" style="display: none;">
+                <img src="fit24.gif" id="gif20" style="display: none;">
+                <img src="fit25.gif" id="gif21" style="display: none;">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validate() {
+            var allImages = document.querySelectorAll('.highlighted-box img');
+            allImages.forEach(function(image) {
+                image.style.display = 'none';
+            });
+
+            var symptom = document.getElementById("symptom").value;
+            switch (symptom) {
+                case "leg":
+                    document.getElementById("gif").style.display = "block"; 
+                    document.getElementById("gif1").style.display = "block";
+                    document.getElementById("gif2").style.display = "block";  
+                    document.getElementById("gif3").style.display = "block";  
+                    document.getElementById("gif4").style.display = "block";  
+                    document.getElementById("gif5").style.display = "block";  
+                    // Display GIF for "cold" symptom
+                    break;
+                case "sholder":
+                    // Code for fever
+                    document.getElementById("gif6").style.display = "block";  
+                    document.getElementById("gif7").style.display = "block";
+                    document.getElementById("gif8").style.display = "block"; 
+                    document.getElementById("gif9").style.display = "block";  
+                    document.getElementById("gif10").style.display = "block";  
+                    document.getElementById("gif11").style.display = "block";  
+                    break;
+                case "backpain":
+                    // Code for cough
+                    document.getElementById("gif16").style.display = "block";
+                    document.getElementById("gif17").style.display = "block";
+                    document.getElementById("gif18").style.display = "block";
+                    document.getElementById("gif19").style.display = "block";
+                    document.getElementById("gif20").style.display = "block";
+                    document.getElementById("gif21").style.display = "block";
+                    break;
+                case "neckpain":
+                    // Code for 
+                    document.getElementById("gif12").style.display = "block";  
+                    document.getElementById("gif13").style.display = "block";  
+                    document.getElementById("gif14").style.display = "block";  
+                    document.getElementById("gif15").style.display = "block";
+                    break;
+        
+                default:
+                    // Code for invalid input
+            }
+        }
+
+        function removeElement() {
+            var element = document.getElementById('clear');
+            if (element) {
+                element.parentNode.removeChild(element);
+            }
+        }
+    </script>
+</body>
+</html>

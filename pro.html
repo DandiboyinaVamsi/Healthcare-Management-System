@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ffb6c1, #aad2eb); /* Gradient from light pink to light blue */
+        }
+
+        #content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%; /* Adjust the width as needed */
+        }
+
+        form {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #test, #precautions {
+            text-align: left; /* Align text to the left */
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #fff; /* Highlighted box color */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            width: calc(50% - 10px); /* Adjust the width as needed */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        ul li {
+            margin: 8px 0;
+        }
+
+        #precautions {
+            background-color: #e0f7fa;
+        }
+        p{
+            color: red;
+        }
+
+        /* Added new CSS for result and precautions alignment */
+        #test {
+            float: right;
+            margin-left: 10px;
+        }
+
+        #precautions {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <nav style="background: #007BFF; padding: 10px; text-align: center;">
+    <a href="pro.html" style="color: white; margin: 0 15px;">Home</a>
+    <a href="food.html" style="color: white; margin: 0 15px;">Food Suggestions</a>
+    <a href="fitness(exercess).html" style="color: white; margin: 0 15px;">Exercise</a>
+    <a href="login.html" style="color: white; margin: 0 15px;">Login</a>
+    <a href="register.html" style="color: white; margin: 0 15px;">Register</a>
+  </nav>
+    <div id="content">
+        <form>
+            <label for="symptom">Symptom:</label>
+            <select id="symptom">
+                <option value="fever">Fever</option>
+                <option value="cold">Cold</option>
+                <option value="cough">Cough</option>
+                <option value="headache">Headache</option>
+                <option value="bodypains">Body Pains</option>
+                <option value="diarrhoea">Diarrhoea</option>
+            </select>
+            <p>*fever</p>
+            <p>*cold</p>
+            <p>*cough</p>
+            <p>*headache</p> 
+            <p>*bodypains</p>
+            <p>*diarrhoea</p>
+            <center><button type="button" onclick="validate()">Submit</button></center><br>
+            <center><button><a href="food.html" style="text-decoration: none; color: #fff;">Display Food Items</a></button></center>
+        </form>
+
+        <div>
+            <p style="color: black" id="test">Result: <span></span></p>
+            <p style="color: black" id="precautions">Precautions: <span></span></p>
+        </div>
+    </div>
+
+    <script>
+        function validate() {
+            var test_area = document.querySelector("#test span");
+            var precautions_area = document.querySelector("#precautions span");
+            var symptom = document.getElementById("symptom").value;
+
+            switch (symptom) {
+                case "fever":
+                    test_area.innerHTML = "You have fever";
+                    precautions_area.innerHTML = "<ul><li>Drink plenty of fluids, such as water, herbal tea, and electrolyte-rich beverages, to stay hydrated and help lower body temperature.</li><br><br><li>Rest in a cool and comfortable environment to promote recovery.</li><br><br><li>Take a lukewarm bath or use cool compresses to help lower body temperature.</li><br><br><li>Eat light and easily digestible foods to provide essential nutrients without taxing the body.</li><br><br><li>Monitor your temperature regularly and seek medical attention if fever persists or worsens.</li><br><br><li>Avoid excessive physical exertion and exposure to extreme temperatures.</li></ul>";
+                    break;
+                case "cold":
+                    test_area.innerHTML = "You have cold";
+                    precautions_area.innerHTML = "<ul><li>Drink plenty of fluids, such as water, herbal tea, and clear broths, to stay hydrated and help relieve congestion.</li><br><br><li>Get plenty of rest to support your immune system in fighting off the virus.</li><br><br><li>Gargle with warm salt water to soothe a sore throat and reduce inflammation.</li><br><br><li>Use a humidifier or take a hot shower to moisten the air and ease congestion.</li><br><br><li>Eat foods rich in vitamin C, such as oranges, strawberries, and bell peppers, to boost your immune system.</li><br><br><li>Avoid smoking and exposure to secondhand smoke, as it can worsen cold symptoms and prolong recovery.</li></ul>";
+                    break;
+                case "cough":
+                    test_area.innerHTML = "You have cough";
+                    precautions_area.innerHTML = "<ul><li>Stay hydrated by drinking plenty of warm fluids like water, herbal teas, and clear broths to soothe the throat and thin mucus.</li><br><br><li>Use a humidifier or inhale steam from a bowl of hot water to ease coughing and loosen congestion in the chest.</li><br><br><li>Avoid irritants such as cigarette smoke, strong odors, and air pollution that can exacerbate coughing.</li><br><br><li>Try natural cough remedies like honey mixed with warm water or herbal cough syrups containing ingredients like ivy leaf or thyme.</li><br><br><li>Rest and avoid excessive talking to allow the throat to recover.</li><br><br><li>Elevate your head while sleeping to help reduce nighttime coughing.</li></ul>";
+                    break;
+                case "headache":
+                    test_area.innerHTML = "You have headache";
+                    precautions_area.innerHTML = "<ul><li>Rest in a quiet, dark room to alleviate headache symptoms and promote relaxation.</li><br><br><li>Apply a cold compress to the forehead or the back of the neck to numb the area and reduce inflammation.</li><br><br><li>Stay hydrated by drinking plenty of water to prevent dehydration, which can exacerbate headaches.</li><br><br><li>Practice relaxation techniques such as deep breathing exercises, meditation, or yoga to reduce stress and tension.</li><br><br><li>Avoid triggers such as bright lights, loud noises, strong smells, and certain foods that may trigger or worsen headaches.</li><br><br><li>Consider using natural remedies like peppermint oil, ginger tea, or lavender essential oil for headache relief.</li></ul>";
+                    break;
+                case "bodypains":
+                    test_area.innerHTML = "You have body pains";
+                    precautions_area.innerHTML = "<ul><li>Apply a warm compress or take a warm bath to relax sore muscles and alleviate body pain.</li><br><br><li>Practice gentle stretching exercises or yoga to improve flexibility and reduce muscle tension.</li><br><br><li>Get plenty of rest and sleep to allow the body to recover and repair itself.</li><br><br><li>Stay hydrated by drinking water and herbal teas to help flush out toxins and reduce inflammation.</li><br><br><li>Consider using natural remedies like arnica gel, turmeric, or Epsom salt baths for pain relief.</li><br><br><li>Avoid strenuous activities and heavy lifting that may exacerbate body pains.</li></ul>";
+                    break;
+                case "diarrhoea":
+                    test_area.innerHTML = "You have diarrhea";
+                    precautions_area.innerHTML = "<ul><li>Stay hydrated by drinking clear fluids like water, electrolyte solutions, and herbal teas to replace lost fluids and electrolytes.</li><br><br><li>Follow a bland diet consisting of easily digestible foods like bananas, rice, applesauce, and toast (BRAT diet) to help firm up stools and reduce irritation to the digestive system.</li><br><br><li>Avoid caffeine, dairy products, fatty foods, spicy foods, and high-fiber foods that can exacerbate diarrhea and irritate the digestive tract.</li><br><br><li>Rest and avoid strenuous activities to conserve energy and allow the body to focus on healing.</li><br><br><li>Consider natural remedies like probiotics, ginger, or chamomile tea to help alleviate symptoms and restore balance to the digestive system.</li><br><br><li>Seek medical attention if diarrhea is severe, persists for more than a few days, or is accompanied by other concerning symptoms.</li></ul>";
+                    break;
+                default:
+                    test_area.innerHTML = "Invalid input";
+                    precautions_area.innerHTML = "";
+            }
+        }
+    </script>
+
+</body>
+</html>
